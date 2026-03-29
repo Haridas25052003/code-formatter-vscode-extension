@@ -1,7 +1,7 @@
 {
   "name": "code-formatter",
-  "displayName": "code-formatter",
-  "description": "Formats code by removing extra spaces",
+  "displayName": "Code Formatter",
+  "description": "Formats code using AST",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.110.0"
@@ -9,7 +9,9 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:code-formatter.formatCode"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -17,24 +19,23 @@
         "command": "code-formatter.formatCode",
         "title": "Format My Code"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Code Formatter",
+      "properties": {
+        "codeFormatter.tabSize": {
+          "type": "number",
+          "default": 2,
+          "description": "Number of spaces for indentation"
+        }
+      }
+    }
   },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.110.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "typescript-eslint": "^8.56.1",
-    "eslint": "^9.39.3",
-    "typescript": "^5.9.3",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+  "scripts": {},
+  "dependencies": {
+    "@babel/generator": "^7.29.1",
+    "@babel/parser": "^7.29.2",
+    "@babel/traverse": "^7.29.0",
+    "@babel/types": "^7.29.0"
   }
 }
