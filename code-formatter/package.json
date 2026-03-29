@@ -12,12 +12,16 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "code-formatter.formatCode",
-        "title": "Format My Code"
+    "configuration": {
+      "title": "Code Formatter",
+      "properties": {
+        "codeFormatter.tabSize": {
+          "type": "number",
+          "default": 2,
+          "description": "Number of spaces for indentation"
+        }
       }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
